@@ -4,7 +4,7 @@ datos requeridos se encuentran en el archivo data.csv. En este laboratorio
 solo puede utilizar las funciones y librerias basicas de python. No puede
 utilizar pandas, numpy o scipy.
 """
-
+from homework.read_data import read_data
 
 def pregunta_06():
     """
@@ -26,3 +26,21 @@ def pregunta_06():
      ('jjj', 5, 17)]
 
     """
+    data = read_data()
+
+    datos = {}
+
+    for row in data:
+        dic = row[4].split(',')
+        for i in dic:
+            key, value = i.split(':')
+            if key not in datos:
+                datos[key] = [int(value), int(value)]
+            else:
+                datos[key][0] = min(datos[key][0], int(value))
+                datos[key][1] = max(datos[key][1], int(value))
+    # Ordenar el diccionario por la clave
+    datos = sorted(datos.items(), key=lambda x: x[0])
+    # Convertir el diccionario a la lista de tuplas
+    datos = [(key, value[0], value[1]) for key, value in datos]
+    return datos

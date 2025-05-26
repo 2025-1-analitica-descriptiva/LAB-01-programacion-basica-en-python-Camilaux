@@ -4,7 +4,7 @@ datos requeridos se encuentran en el archivo data.csv. En este laboratorio
 solo puede utilizar las funciones y librerias basicas de python. No puede
 utilizar pandas, numpy o scipy.
 """
-
+from homework.read_data import read_data
 
 def pregunta_11():
     """
@@ -16,3 +16,21 @@ def pregunta_11():
 
 
     """
+    data = read_data()
+
+    result = {}
+
+    for row in data:
+        key = row[3].split(',')
+        value = int(row[1])
+
+        for k in key:
+
+            if k not in result:
+                result[k] = 0
+            result[k] += value
+
+    # Ordenar el diccionario por las claves
+    sorted_result = dict(sorted(result.items()))
+
+    return sorted_result

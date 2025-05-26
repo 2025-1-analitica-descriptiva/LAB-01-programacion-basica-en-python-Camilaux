@@ -4,7 +4,7 @@ datos requeridos se encuentran en el archivo data.csv. En este laboratorio
 solo puede utilizar las funciones y librerias basicas de python. No puede
 utilizar pandas, numpy o scipy.
 """
-
+from homework.read_data import read_data
 
 def pregunta_10():
     """
@@ -20,3 +20,16 @@ def pregunta_10():
 
 
     """
+    data = read_data()
+    result = []
+    
+    for row in data:
+        letter = row[0]
+        column_4 = row[3].split(',')
+        column_5 = row[4].split(',')
+    
+        count_col4 = len(column_4) if column_4 else 0
+        count_col5 = len(column_5) if column_5 else 0
+        result.append((letter, count_col4, count_col5))
+    
+    return result

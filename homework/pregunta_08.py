@@ -31,7 +31,7 @@ def pregunta_08():
     result = {}
 
     for row in data:
-        key = row[1]
+        key = int(row[1])
         letter = row[0]
         if key not in result:
             result[key] = set()

@@ -29,7 +29,7 @@ def pregunta_07():
     result = {}
 
     for row in data:
-        key = row[1]
+        key = int(row[1])
         value = row[0]
 
         if key not in result:
@@ -42,3 +42,5 @@ def pregunta_07():
     result.sort(key=lambda x: x[0])
 
     return result
+
+print(pregunta_07())
